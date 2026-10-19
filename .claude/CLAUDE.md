@@ -1,6 +1,6 @@
 # Matrion
 
-Marketing site for **Matrion** (https://matrion.in), a deep tech company. Current focus: **GPS-denied navigation for drones**.
+Marketing site for **Matrion** (https://matrion.in), a deep tech company with two products: **AutoNav** (GPS-denied navigation for drones) and **AI Research** (generative AI for research search, discovery and conversation).
 
 ## Layout
 - `web/` — Vite + React + TypeScript single-page site. No backend.
@@ -14,5 +14,5 @@ Marketing site for **Matrion** (https://matrion.in), a deep tech company. Curren
 - `npm test` — Vitest + Testing Library; JUnit written to `web/reports/junit.xml`.
 
 ## Rules
-- Tests first: the specs in `src/App.test.tsx` pin the content contract (brand, deep-tech positioning, GPS-denied focus, nav anchors resolve).
+- Tests first: the specs in `src/App.test.tsx` pin the content contract (brand, deep-tech positioning, exactly two products — AutoNav (GPS-denied drone navigation) and AI Research (search, discovery, conversation) — and nav anchors resolve).
 - Copy must not claim performance numbers, customers or milestones that haven't been confirmed.

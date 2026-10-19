@@ -10,11 +10,38 @@ describe('Matrion site', () => {
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/deep tech/i)
   })
 
-  it('states that GPS-denied drone navigation is the current focus', () => {
+  it('calls out exactly two products: AutoNav and AI-powered research', () => {
     render(<App />)
-    const focus = screen.getByRole('region', { name: /current focus/i })
-    expect(within(focus).getByRole('heading', { level: 2 })).toHaveTextContent(/gps-denied navigation/i)
-    expect(focus).toHaveTextContent(/drones/i)
+    const products = screen.getByRole('region', { name: /^products$/i })
+    const names = within(products)
+      .getAllByRole('heading', { level: 3 })
+      .map((h) => h.textContent)
+    expect(names).toHaveLength(2)
+    expect(names[0]).toMatch(/autonav/i)
+    expect(names[1]).toMatch(/ai.*research/i)
+    for (const link of within(products).getAllByRole('link')) {
+      const target = link.getAttribute('href')
+      expect(document.querySelector(target!), `missing product section for ${target}`).not.toBeNull()
+    }
+  })
+
+  it('presents AutoNav as GPS-denied navigation for drones', () => {
+    render(<App />)
+    const autonav = screen.getByRole('region', { name: /product 01.*autonav/i })
+    expect(within(autonav).getByRole('heading', { level: 2 })).toHaveTextContent(/gps-denied navigation/i)
+    expect(autonav).toHaveTextContent(/drones/i)
+  })
+
+  it('presents the AI research product with search, discovery and conversation', () => {
+    render(<App />)
+    const research = screen.getByRole('region', { name: /product 02.*ai research/i })
+    expect(within(research).getByRole('heading', { level: 2 })).toHaveTextContent(/ai-powered research/i)
+    const features = within(research)
+      .getAllByRole('heading', { level: 3 })
+      .map((h) => h.textContent)
+    for (const feature of [/search/i, /discovery/i, /conversation/i]) {
+      expect(features.some((f) => feature.test(f ?? '')), `missing feature ${feature}`).toBe(true)
+    }
   })
 
   it('explains the navigation approach as a set of named techniques', () => {

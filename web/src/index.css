@@ -486,6 +486,43 @@ a {
   font-size: 0.95rem;
 }
 
+/* Products */
+
+.product-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+}
+
+.product-card {
+  padding: clamp(28px, 4vw, 44px);
+  gap: 14px;
+}
+
+.product-card h3 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 400;
+}
+
+.product-card .product-tagline {
+  color: var(--text);
+  font-size: 1.05rem;
+}
+
+.product-link {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  text-decoration: none;
+  margin-top: 6px;
+}
+
+.product-link:hover {
+  text-decoration: underline;
+}
+
+.feature-grid {
+  margin-top: clamp(36px, 5vw, 56px);
+}
+
 /* Principles */
 
 .principles {
@@ -537,4 +574,8 @@ a {
   font-family: var(--mono);
   letter-spacing: 0.12em;
   font-size: 0.72rem;
+}
+
+.nowrap {
+  white-space: nowrap;
 }

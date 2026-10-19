@@ -2,11 +2,55 @@ import NavViz from './components/NavViz'
 import { CONTACT_EMAIL } from './config'
 
 const NAV = [
-  { href: '#focus', label: 'Current focus' },
-  { href: '#approach', label: 'Approach' },
-  { href: '#applications', label: 'Applications' },
+  { href: '#products', label: 'Products' },
+  { href: '#autonav', label: 'AutoNav' },
+  { href: '#research', label: 'AI Research' },
   { href: '#principles', label: 'How we work' },
   { href: '#contact', label: 'Contact' },
+]
+
+const PRODUCTS = [
+  {
+    code: '01',
+    href: '#autonav',
+    name: 'AutoNav',
+    tagline: 'GPS-denied navigation for drones',
+    body: 'A navigation stack that keeps aircraft flying when satellite positioning is jammed, spoofed or simply out of reach.',
+  },
+  {
+    code: '02',
+    href: '#research',
+    name: 'AI Research',
+    tagline: 'Next-gen AI-powered research',
+    body: 'Generative AI for research: search, discovery and conversation over the literature and your own documents.',
+  },
+]
+
+const RESEARCH_FEATURES = [
+  {
+    title: 'Search',
+    body: 'Ask in plain language. Semantic and keyword retrieval work together across papers, patents, reports and your private corpus.',
+  },
+  {
+    title: 'Discovery',
+    body: 'Surface related work, follow citation trails and spot emerging topics and open gaps you would not have thought to search for.',
+  },
+  {
+    title: 'Conversation',
+    body: 'Multi-turn dialogue with a body of research. Every answer is grounded in source passages and cited, so it can be checked.',
+  },
+  {
+    title: 'Summarisation & synthesis',
+    body: 'Condense a paper to what matters, or synthesise many into a structured review that compares methods, findings and limitations.',
+  },
+  {
+    title: 'Structured extraction',
+    body: 'Pull methods, datasets, parameters and results out of documents into tables you can compare and export.',
+  },
+  {
+    title: 'Research agents',
+    body: 'Multi-step agents that plan queries, read sources and assemble a report, with every step visible for review.',
+  },
 ]
 
 const APPROACH = [
@@ -57,7 +101,7 @@ const PRINCIPLES = [
   },
   {
     title: 'Hard problems on purpose',
-    body: 'We choose problems where the science is still open and the payoff is structural. GPS-denied navigation is the first.',
+    body: 'We choose problems where the science is still open and the payoff is structural: navigation without satellites, and research at the speed of thought.',
   },
 ]
 
@@ -85,15 +129,16 @@ export default function App() {
           <div className="hero-copy">
             <p className="eyebrow">Matrion · Deep tech</p>
             <h1>
-              Deep tech for machines that <em>navigate without satellites.</em>
+              Deep tech for <em>autonomy and intelligence.</em>
             </h1>
             <p className="lede">
-              Matrion builds the hard layers of autonomy: perception, estimation and embedded compute. Right now we are
-              focused on one problem: <strong>GPS-denied navigation for drones.</strong>
+              Matrion builds the hard layers of autonomy and AI. Two products:{' '}
+              <strong>AutoNav</strong>, GPS-denied navigation for drones, and <strong>AI Research</strong>, generative
+              AI for search, discovery and conversation.
             </p>
             <div className="cta-row">
-              <a className="btn btn-primary" href="#focus">
-                See what we're building
+              <a className="btn btn-primary" href="#products">
+                See our products
               </a>
               <a className="btn btn-ghost" href="#contact">
                 Work with us
@@ -105,9 +150,29 @@ export default function App() {
       </header>
 
       <main>
-        <section id="focus" className="section focus" aria-labelledby="focus-label">
-          <p className="section-label" id="focus-label">
-            Current focus
+        <section id="products" className="section" aria-labelledby="products-label">
+          <p className="section-label" id="products-label">
+            Products
+          </p>
+          <h2 className="section-title">Two products, one discipline: hard problems, done properly.</h2>
+          <ul className="card-grid product-grid">
+            {PRODUCTS.map((p) => (
+              <li key={p.name} className="card product-card">
+                <span className="approach-code">Product {p.code}</span>
+                <h3>{p.name}</h3>
+                <p className="product-tagline">{p.tagline}</p>
+                <p>{p.body}</p>
+                <a className="product-link" href={p.href}>
+                  Explore {p.name} →
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section id="autonav" className="section focus" aria-labelledby="autonav-label">
+          <p className="section-label" id="autonav-label">
+            Product 01 · AutoNav
           </p>
           <div className="focus-grid">
             <h2>GPS-denied navigation for drones</h2>
@@ -136,7 +201,7 @@ export default function App() {
 
         <section id="approach" className="section" aria-labelledby="approach-label">
           <p className="section-label" id="approach-label">
-            Approach
+            AutoNav · Approach
           </p>
           <h2 className="section-title">Five layers, one estimate you can trust.</h2>
           <ol className="approach-list">
@@ -152,7 +217,7 @@ export default function App() {
 
         <section id="applications" className="section" aria-labelledby="applications-label">
           <p className="section-label" id="applications-label">
-            Applications
+            AutoNav · Applications
           </p>
           <h2 className="section-title">Where satellites can't be trusted.</h2>
           <ul className="card-grid">
@@ -160,6 +225,35 @@ export default function App() {
               <li key={a.title} className="card">
                 <h3>{a.title}</h3>
                 <p>{a.body}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section id="research" className="section focus" aria-labelledby="research-label">
+          <p className="section-label" id="research-label">
+            Product 02 · AI Research
+          </p>
+          <div className="focus-grid">
+            <h2>
+              Next-gen <span className="nowrap">AI-powered</span> research
+            </h2>
+            <div className="focus-body">
+              <p>
+                Research is buried in more papers, patents and reports than anyone can read. Keyword search finds
+                documents; it does not find answers, connections or the work you didn't know existed.
+              </p>
+              <p>
+                AI Research brings generative AI to the whole loop: finding sources, discovering what connects them, and
+                talking through them, with every claim traced back to the passage it came from.
+              </p>
+            </div>
+          </div>
+          <ul className="card-grid feature-grid" aria-label="AI Research capabilities">
+            {RESEARCH_FEATURES.map((f) => (
+              <li key={f.title} className="card">
+                <h3>{f.title}</h3>
+                <p>{f.body}</p>
               </li>
             ))}
           </ul>
@@ -184,10 +278,10 @@ export default function App() {
           <p className="section-label" id="contact-label">
             Contact
           </p>
-          <h2 className="section-title">Flying where GNSS won't reach?</h2>
+          <h2 className="section-title">Building something hard?</h2>
           <p className="contact-body">
-            We want to hear from operators, airframe makers, integrators and researchers working on navigation in
-            denied environments.
+            For AutoNav, we want to hear from operators, airframe makers and integrators flying in denied environments.
+            For AI Research, from research teams, labs and R&amp;D organisations drowning in literature.
           </p>
           <a className="btn btn-primary" href={`mailto:${CONTACT_EMAIL}`}>
             {CONTACT_EMAIL}
@@ -197,7 +291,7 @@ export default function App() {
 
       <footer className="footer">
         <span>© {new Date().getFullYear()} Matrion</span>
-        <span className="footer-mono">DEEP TECH · AUTONOMY · NAVIGATION</span>
+        <span className="footer-mono">DEEP TECH · AUTONOMY · AI</span>
       </footer>
     </>
   )
