@@ -10,15 +10,16 @@ describe('Matrion site', () => {
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/deep tech/i)
   })
 
-  it('calls out exactly two products: AutoNav and AI-powered research', () => {
+  it('calls out exactly three products: AutoNav, AI-powered research and Sutradhar', () => {
     render(<App />)
     const products = screen.getByRole('region', { name: /^products$/i })
     const names = within(products)
       .getAllByRole('heading', { level: 3 })
       .map((h) => h.textContent)
-    expect(names).toHaveLength(2)
+    expect(names).toHaveLength(3)
     expect(names[0]).toMatch(/autonav/i)
     expect(names[1]).toMatch(/ai.*research/i)
+    expect(names[2]).toMatch(/sutradhar/i)
     for (const link of within(products).getAllByRole('link')) {
       const target = link.getAttribute('href')
       expect(document.querySelector(target!), `missing product section for ${target}`).not.toBeNull()
@@ -42,6 +43,39 @@ describe('Matrion site', () => {
     for (const feature of [/search/i, /discovery/i, /conversation/i]) {
       expect(features.some((f) => feature.test(f ?? '')), `missing feature ${feature}`).toBe(true)
     }
+  })
+
+  it('presents Sutradhar as AI-assisted SDLC management with human review and an audit trail', () => {
+    render(<App />)
+    const sutradhar = screen.getByRole('region', { name: /product 03.*sutradhar/i })
+    expect(within(sutradhar).getByRole('heading', { level: 2 })).toHaveTextContent(/software development life cycle/i)
+    expect(sutradhar).toHaveTextContent(/human review/i)
+    expect(sutradhar).toHaveTextContent(/audit trail/i)
+    const features = within(sutradhar)
+      .getAllByRole('heading', { level: 3 })
+      .map((h) => h.textContent)
+    for (const feature of [
+      /requirements gap analysis/i,
+      /traceability/i,
+      /test case generation/i,
+      /static code analysis/i,
+      /knowledge-graph search/i,
+      /skeleton code generation/i,
+    ]) {
+      expect(features.some((f) => feature.test(f ?? '')), `missing feature ${feature}`).toBe(true)
+    }
+  })
+
+  it('lists every Sutradhar deployment option, including air-gapped on-premise', () => {
+    render(<App />)
+    const deployment = screen.getByRole('region', { name: /sutradhar.*deployment/i })
+    const options = within(deployment)
+      .getAllByRole('heading', { level: 3 })
+      .map((h) => h.textContent)
+    for (const option of [/on-premise/i, /private cloud/i, /meity-empanelled government cloud/i, /public cloud/i]) {
+      expect(options.some((o) => option.test(o ?? '')), `missing deployment option ${option}`).toBe(true)
+    }
+    expect(deployment).toHaveTextContent(/air-gapped/i)
   })
 
   it('explains the navigation approach as a set of named techniques', () => {

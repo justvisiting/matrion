@@ -5,6 +5,7 @@ const NAV = [
   { href: '#products', label: 'Products' },
   { href: '#autonav', label: 'AutoNav' },
   { href: '#research', label: 'AI Research' },
+  { href: '#sutradhar', label: 'Sutradhar' },
   { href: '#principles', label: 'How we work' },
   { href: '#contact', label: 'Contact' },
 ]
@@ -23,6 +24,13 @@ const PRODUCTS = [
     name: 'AI Research',
     tagline: 'Next-gen AI-powered research',
     body: 'Generative AI for research: search, discovery and conversation over the literature and your own documents.',
+  },
+  {
+    code: '03',
+    href: '#sutradhar',
+    name: 'Sutradhar',
+    tagline: 'AI-assisted SDLC management',
+    body: 'Requirements, traceability, tests, code analysis and legacy knowledge in one platform, with human review and a full audit trail.',
   },
 ]
 
@@ -51,6 +59,46 @@ const RESEARCH_FEATURES = [
     title: 'Research agents',
     body: 'Multi-step agents that plan queries, read sources and assemble a report, with every step visible for review.',
   },
+]
+
+const SUTRADHAR_FEATURES = [
+  {
+    title: 'Requirements gap analysis',
+    body: 'Find what is missing, ambiguous or contradictory in a requirements set before it turns into rework.',
+  },
+  {
+    title: 'Bi-directional traceability',
+    body: 'Generate the traceability matrix that links each requirement forward to design, code and tests, and each artefact back to the requirement it serves.',
+  },
+  {
+    title: 'Test case generation',
+    body: 'Draft test cases from the requirements themselves, each one traced back to the requirement it verifies.',
+  },
+  {
+    title: 'Static code analysis',
+    body: 'Analyse source code statically and check it for compliance with the coding standard your programme follows.',
+  },
+  {
+    title: 'Knowledge-graph search',
+    body: 'Search legacy code and documents as one connected knowledge graph, so the context behind old systems can be found instead of rediscovered.',
+  },
+  {
+    title: 'Skeleton code generation',
+    body: 'Generate skeleton code from the specification as a structured starting point for engineers to build on.',
+  },
+]
+
+const DEPLOYMENT = [
+  {
+    title: 'On-premise',
+    body: 'Fully on your own GPU servers, including air-gapped and mission-critical environments.',
+  },
+  { title: 'Private cloud', body: 'Deployed inside your organisation’s own private cloud.' },
+  {
+    title: 'MeitY-empanelled government cloud',
+    body: 'Hosted on a government cloud empanelled by the Ministry of Electronics and IT (MeitY).',
+  },
+  { title: 'Public cloud', body: 'Run on public cloud infrastructure where your data policy permits it.' },
 ]
 
 const APPROACH = [
@@ -101,7 +149,7 @@ const PRINCIPLES = [
   },
   {
     title: 'Hard problems on purpose',
-    body: 'We choose problems where the science is still open and the payoff is structural: navigation without satellites, and research at the speed of thought.',
+    body: 'We choose problems where the science is still open and the payoff is structural: navigation without satellites, research at the speed of thought, and software delivery that is traceable end to end.',
   },
 ]
 
@@ -132,9 +180,9 @@ export default function App() {
               Deep tech for <em>autonomy and intelligence.</em>
             </h1>
             <p className="lede">
-              Matrion builds the hard layers of autonomy and AI. Two products:{' '}
-              <strong>AutoNav</strong>, GPS-denied navigation for drones, and <strong>AI Research</strong>, generative
-              AI for search, discovery and conversation.
+              Matrion builds the hard layers of autonomy and AI. Three products: <strong>AutoNav</strong>, GPS-denied
+              navigation for drones; <strong>AI Research</strong>, generative AI for search, discovery and
+              conversation; and <strong>Sutradhar</strong>, AI-assisted software development life cycle management.
             </p>
             <div className="cta-row">
               <a className="btn btn-primary" href="#products">
@@ -154,7 +202,7 @@ export default function App() {
           <p className="section-label" id="products-label">
             Products
           </p>
-          <h2 className="section-title">Two products, one discipline: hard problems, done properly.</h2>
+          <h2 className="section-title">Three products, one discipline: hard problems, done properly.</h2>
           <ul className="card-grid product-grid">
             {PRODUCTS.map((p) => (
               <li key={p.name} className="card product-card">
@@ -259,6 +307,49 @@ export default function App() {
           </ul>
         </section>
 
+        <section id="sutradhar" className="section focus" aria-labelledby="sutradhar-label">
+          <p className="section-label" id="sutradhar-label">
+            Product 03 · Sutradhar
+          </p>
+          <div className="focus-grid">
+            <h2>AI-assisted software development life cycle management</h2>
+            <div className="focus-body">
+              <p>
+                In Sanskrit theatre the sutradhar is the one who holds the threads. In software, those threads run from
+                each requirement through design, code and tests. On long, regulated programmes they tangle, and
+                traceability, review and compliance turn into manual work.
+              </p>
+              <p>
+                Sutradhar automates that work across the life cycle. Every AI output goes through human review, and
+                every action is recorded in a full audit trail.
+              </p>
+            </div>
+          </div>
+          <ul className="card-grid feature-grid" aria-label="Sutradhar capabilities">
+            {SUTRADHAR_FEATURES.map((f) => (
+              <li key={f.title} className="card">
+                <h3>{f.title}</h3>
+                <p>{f.body}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section id="deployment" className="section" aria-labelledby="deployment-label">
+          <p className="section-label" id="deployment-label">
+            Sutradhar · Deployment
+          </p>
+          <h2 className="section-title">Runs where your code is allowed to live.</h2>
+          <ul className="card-grid deploy-grid">
+            {DEPLOYMENT.map((d) => (
+              <li key={d.title} className="card">
+                <h3>{d.title}</h3>
+                <p>{d.body}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
         <section id="principles" className="section" aria-labelledby="principles-label">
           <p className="section-label" id="principles-label">
             How we work
@@ -281,7 +372,9 @@ export default function App() {
           <h2 className="section-title">Building something hard?</h2>
           <p className="contact-body">
             For AutoNav, we want to hear from operators, airframe makers and integrators flying in denied environments.
-            For AI Research, from research teams, labs and R&amp;D organisations drowning in literature.
+            For AI Research, from research teams, labs and R&amp;D organisations drowning in literature. For Sutradhar,
+            from engineering organisations that need traceable, auditable software delivery, including on-premise and
+            air-gapped.
           </p>
           <a className="btn btn-primary" href={`mailto:${CONTACT_EMAIL}`}>
             {CONTACT_EMAIL}
@@ -290,7 +383,7 @@ export default function App() {
       </main>
 
       <footer className="footer">
-        <span>© {new Date().getFullYear()} Matrion</span>
+        <span>© {new Date().getFullYear()} Matrion LLP · Bengaluru</span>
         <span className="footer-mono">DEEP TECH · AUTONOMY · AI</span>
       </footer>
     </>

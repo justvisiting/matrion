@@ -489,7 +489,13 @@ a {
 /* Products */
 
 .product-grid {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .product-card {
@@ -521,6 +527,22 @@ a {
 
 .feature-grid {
   margin-top: clamp(36px, 5vw, 56px);
+}
+
+.deploy-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 960px) {
+  .deploy-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .deploy-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 /* Principles */

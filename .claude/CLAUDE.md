@@ -1,6 +1,6 @@
 # Matrion
 
-Marketing site for **Matrion** (https://matrion.in), a deep tech company with two products: **AutoNav** (GPS-denied navigation for drones) and **AI Research** (generative AI for research search, discovery and conversation).
+Marketing site for **Matrion** (https://matrion.in), a deep tech company (Matrion LLP, Bengaluru) with three products: **AutoNav** (GPS-denied navigation for drones), **AI Research** (generative AI for research search, discovery and conversation) and **Sutradhar** (AI-assisted SDLC management: requirements gap analysis, traceability, test generation, static analysis, knowledge-graph search, skeleton code; deploys on-premise/air-gapped, private, MeitY-empanelled government or public cloud).
 
 ## Layout
 - `web/` — Vite + React + TypeScript single-page site. No backend.
@@ -14,5 +14,5 @@ Marketing site for **Matrion** (https://matrion.in), a deep tech company with tw
 - `npm test` — Vitest + Testing Library; JUnit written to `web/reports/junit.xml`.
 
 ## Rules
-- Tests first: the specs in `src/App.test.tsx` pin the content contract (brand, deep-tech positioning, exactly two products — AutoNav (GPS-denied drone navigation) and AI Research (search, discovery, conversation) — and nav anchors resolve).
+- Tests first: the specs in `src/App.test.tsx` pin the content contract (brand, deep-tech positioning, exactly three products — AutoNav (GPS-denied drone navigation), AI Research (search, discovery, conversation) and Sutradhar (SDLC capabilities + deployment options) — and nav anchors resolve).
 - Copy must not claim performance numbers, customers or milestones that haven't been confirmed.
